@@ -1,2 +1,2 @@
-# doctrine-mariadb
+# Doctrine-MariaDB
  MariaDB-specific extensions for Doctrine DBAL
