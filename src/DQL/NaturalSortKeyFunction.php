@@ -15,20 +15,20 @@ use Doctrine\ORM\Query\SqlWalker;
  */
 class NaturalSortKeyFunction extends FunctionNode
 {
-	protected $subSelect;
+	protected $orderByItem;
 
 	public function parse(Parser $parser): void
 	{
 		$parser->match(Lexer::T_IDENTIFIER);
 		$parser->match(Lexer::T_OPEN_PARENTHESIS);
 
-		$this->subselect = $parser->Subselect();
+		$this->orderByItem = $parser->OrderByItem();
 
 		$parser->match(Lexer::T_CLOSE_PARENTHESIS);
 	}
 
 	public function getSql(SqlWalker $sqlWalker): string
 	{
-		return 'NATURAL_SORT_KEY(' . $this->subSelect . ')';
+		return 'NATURAL_SORT_KEY(' . $this->orderByItem . ')';
 	}
 }
